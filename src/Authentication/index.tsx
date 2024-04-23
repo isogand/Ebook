@@ -15,9 +15,6 @@ export const AuthenticationNavigator = () => {
          <AuthenticationStack.Screen
              name="WelcomeScreen"
              component={WelcomeScreen}
-             // options={{
-             //     title: "WelcomeScreen",
-             // }}
          />
        </AuthenticationStack.Navigator>
 )

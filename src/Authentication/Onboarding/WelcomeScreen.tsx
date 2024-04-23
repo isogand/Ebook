@@ -8,9 +8,9 @@ const WelcomeScreen = ({ navigation }: AuthNavigationProps<"WelcomeScreen">) => 
     const styles = useStyles();
     return (
        <Box style={styles.co} alignItems={'center'} justifyContent={'center'} flex={1}>
-           <Text>Hi</Text>
+           <Text>Welcome</Text>
        </Box>
-    )
+    );
 };
 const useStyles = makeStyles((theme) => ({
     co:{
