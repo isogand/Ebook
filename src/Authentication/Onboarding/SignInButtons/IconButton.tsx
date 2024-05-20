@@ -1,12 +1,11 @@
 import React from 'react';
-import {palette, Text} from "../../../Constants/Theme";
+import {palette} from "../../../Constants/Theme";
 import {ActivityIndicator, Dimensions, View} from "react-native";
-import {color} from "@shopify/restyle";
 import GoogleSignIn from "./GoogleSignIn/index.native";
 import {Button} from "../../../components/Button";
 import * as Google from "expo-auth-session/providers/google";
 import * as WebBrowser from "expo-web-browser";
-import { GoogleAuthProvider,onAuthStateChanged,signInWithCredential} from "firebase/auth";
+import {GoogleAuthProvider, onAuthStateChanged, signInWithCredential} from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {auth} from "../../../../firebaseConfig";
 
@@ -38,12 +37,12 @@ function IconButton({}: IconButtonProps) {
     }
 
     React.useEffect(()=> {
-        if (request?.type == "success") {
-            const {id_token} = request.params;
+        if (response?.type == "success") {
+            const {id_token} = response.params;
             const credential = GoogleAuthProvider.credential(id_token);
             signInWithCredential(auth, credential);
         }
-    },[request]);
+    },[response]);
 
     React.useEffect(() => {
         checkLocalUser();
@@ -61,7 +60,7 @@ function IconButton({}: IconButtonProps) {
 
         return () => unsub();
     },[]);
-
+    console.log('userInfo', userInfo);
     if(loading) return (<ActivityIndicator size="large" color={palette.blue} />);
     return (
         <View style={{flex:1,alignItems:"center"}}>

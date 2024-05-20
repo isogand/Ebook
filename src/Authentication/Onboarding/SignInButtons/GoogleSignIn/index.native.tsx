@@ -16,7 +16,6 @@ function GoogleSignIn({promptAsync}) {
     return (
         <Button
             title="Continue with Google"
-            // onPress={googleSignInRequest}
             onPress={()=> promptAsync()}
             width={width / 1.1}
             height={60}
