@@ -21,15 +21,16 @@ export const palette = {
     darkgray:'#828282',
     gray:'#7E7E7E',
     textlt:'#4F4F4F',
-    yellow: '#E2B93B',
+    yellow: '#ffee00',
     gold:'#D4AF37',
     bronze:'#CD7F32',
     primaryRed:'#EB5757',
     red: '#d32127',
     light_red: '#da5f63',
-    green: '#27AE60',
     lightgreen: '#CCE7D7',
-    blue: '#2F80ED',
+    green: '#27AE60',
+    lightblue:'rgba(129,194,222,0.24)',
+    blue: '#81C2DE',
     midnightBlue: '#2A2E4B',
     textbk:'#282828',
     black:'#000000',
@@ -90,15 +91,17 @@ const theme = createTheme({
         m: 14,
         l: 25,
         xl: 75,
-        xxl:90
+        xxl:100
     },
     textVariants: {
         variant:{},
         defaults: {},
         hero: {
-            fontSize: 11,
-            fontFamily:'Vazirmatn-Bold',
-            color:'White'
+            fontFamily: "Vazirmatn-Bold",
+            fontSize: 30,
+            lineHeight: 30,
+            color:'Black',
+            textAlign: "center",
         },
         title1: {
             fontSize: 10,

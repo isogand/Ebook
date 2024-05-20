@@ -5,7 +5,11 @@ import {createStackNavigator} from "@react-navigation/stack";
 import {AppRoutes} from "./src/components/Navigation";
 import {AuthenticationNavigator} from "./src/Authentication";
 import { ThemeProvider } from './src/Constants/Theme';
+import "react-native-gesture-handler";
+import * as React from "react";
+import * as WebBrowser from "expo-web-browser";
 
+WebBrowser.maybeCompleteAuthSession();
 
 const fonts = {
     "SFProDisplay-Bold": require("./assets/fonts/SF-Pro-Display-Bold.otf"),
@@ -34,6 +38,4 @@ export default function App() {
     );
 }
 
-const styles = StyleSheet.create({
-
-});
+const styles = StyleSheet.create({});

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChatHistory">
+    <chats>
+      <list>
+        <chat>
+          <accountId value="VXNlcjozOTkyODU=" />
+          <internalId value="9a831f9e-65eb-455f-936d-8c30bf77af91" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+          <messages>
+            <list>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="import {GoogleSignin, statusCodes} from '@react-native-google-signin/google-signin';&#10;import React from 'react';&#10;import {palette} from &amp;quot;../../../../Constants/Theme&amp;quot;;&#10;import {Button} from &amp;quot;../../../../components&amp;quot;;&#10;import {Alert, Dimensions} from &amp;quot;react-native&amp;quot;;&#10;/**&#10; * Google Sign In method for iOS and android that returns identityToken.&#10; */&#10;const {height, width} = Dimensions.get('window');&#10;export default function () {&#10;    GoogleSignin.configure({&#10;        scopes:['https://www.googleapis.com/auth/drive.readonly'],&#10;        webClientId:&amp;quot;&amp;quot;,&#10;        offlineAccess:true,&#10;        hostedDomain:&amp;quot;&amp;quot;,&#10;        forceCodeForRefreshToken:true,&#10;        accountName:&amp;quot;&amp;quot;,&#10;        iosClientId:&amp;quot;&amp;quot;,&#10;        googleServicePlistPath:&amp;quot;&amp;quot;,&#10;        openIdRealm:&amp;quot;&amp;quot;,&#10;        profileImageSize:120&#10;    })&#10;}&#10;&#10;&#10;/**&#10; * Google Sign In button for iOS.&#10; */&#10;function GoogleSignIn() {&#10;    return (&#10;        &amp;lt;Button&#10;            title=&amp;quot;Continue with Google&amp;quot;&#10;            // onPress={googleSignInRequest}&#10;            onPress={()=&amp;gt; true}&#10;            width={width / 1.1}&#10;            height={60}&#10;            borderRadius={100}&#10;            textStyle={{fontFamily: 'Arial', color: palette.textbk, marginHorizontal: 20}}&#10;            style={{&#10;                borderWidth: 1,&#10;                borderColor: palette.input&#10;            }}&#10;            iconName={'googleplus'}&#10;            iconColor={palette.primaryRed}&#10;            iconSize={30}&#10;        /&amp;gt;&#10;    );&#10;}&#10;&#10;GoogleSignIn.displayName = 'GoogleSignIn';&#10;&#10;export default GoogleSignIn;&#10; TS2528: A module cannot have multiple default exports.&#10;index.native.tsx(52, 16): Another export default is here." />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+              </message>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="import {GoogleSignin, statusCodes} from '@react-native-google-signin/google-signin'; import React from 'react'; import {palette} from &amp;quot;../../../../Constants/Theme&amp;quot;; import {Button} from &amp;quot;../../../../components&amp;quot;; import {Alert, Dimensions} from &amp;quot;react-native&amp;quot;; /**&#10;Google Sign In method for iOS and android that returns identityToken. */ const {height, width} = Dimensions.get('window'); export default function () { GoogleSignin.configure({ scopes:['https://www.googleapis.com/auth/drive.readonly'], webClientId:&amp;quot;&amp;quot;, offlineAccess:true, hostedDomain:&amp;quot;&amp;quot;, forceCodeForRefreshToken:true, accountName:&amp;quot;&amp;quot;, iosClientId:&amp;quot;&amp;quot;, googleServicePlistPath:&amp;quot;&amp;quot;, openIdRealm:&amp;quot;&amp;quot;, profileImageSize:120 }) }&#10;/**&#10;Google Sign In button for iOS. */ function GoogleSignIn() { return ( &amp;lt;Button title=&amp;quot;Continue with Google&amp;quot; // onPress={googleSignInRequest} onPress={()=&amp;gt; true} width={width / 1.1} height={60} borderRadius={100} textStyle={{fontFamily: 'Arial', color: palette.textbk, marginHorizontal: 20}} style={{ borderWidth: 1, borderColor: palette.input }} iconName={'googleplus'} iconColor={palette.primaryRed} iconSize={30} /&amp;gt; ); }&#10;GoogleSignIn.displayName = 'GoogleSignIn';&#10;export default GoogleSignIn; TS2528: A module cannot have multiple default exports. index.native.tsx(52, 16): Another export default is here." />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+                <text value="&lt;html&gt;&lt;b&gt;You've used up your chat and commands for the month:&lt;/b&gt; You've used all chat messages and commands for the month. Upgrade to Cody Pro for unlimited autocompletes, chats, and commands. &lt;a href=&quot;https://sourcegraph.com/cody/subscription&quot;&gt;Upgrade&lt;/a&gt; or &lt;a href=&quot;https://sourcegraph.com/cody/subscription&quot;&gt;learn more&lt;/a&gt;.&lt;br&gt;&lt;br&gt;(Already upgraded to Pro? Restart your IDE for changes to take effect)&lt;/html&gt;" />
+              </message>
+            </list>
+          </messages>
+          <updatedAt value="2024-05-19T10:39:49.747186" />
+        </chat>
+        <chat>
+          <accountId value="VXNlcjozOTkyODU=" />
+          <internalId value="6b5408fc-514d-407b-a194-e688967a1aa6" />
+          <llm>
+            <llm>
+              <model value="anthropic/claude-3-sonnet-20240229" />
+              <provider value="Anthropic" />
+              <title value="Claude 3 Sonnet" />
+            </llm>
+          </llm>
+        </chat>
+      </list>
+    </chats>
+    <defaultLlm>
+      <llm>
+        <model value="anthropic/claude-3-sonnet-20240229" />
+        <provider value="Anthropic" />
+        <title value="Claude 3 Sonnet" />
+      </llm>
+    </defaultLlm>
+  </component>
+</project>

@@ -15,13 +15,15 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.isogand.Ebook"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.isogand.Ebook"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -29,6 +31,15 @@
     "plugins": [
       "expo-router",
       "@react-native-google-signin/google-signin"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "132b7514-bb2f-4c45-ad5f-ed4d5fec4f39"
+      }
+    },
+    "scheme": "navigation-test"
   }
 }
