@@ -18,7 +18,7 @@ function GoogleSignIn({promptAsync}) {
             title="Continue with Google"
             onPress={()=> promptAsync()}
             width={width / 1.1}
-            height={60}
+            height={'23%'}
             borderRadius={100}
             textStyle={{fontFamily: 'Arial', color: palette.textbk, marginHorizontal: 20}}
             style={{
