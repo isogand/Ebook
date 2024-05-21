@@ -18,7 +18,7 @@ interface ButtonProps {
     style?: ViewStyle;
     textStyle?: TextStyle | TextStyle[];
     width?: number;
-    height?: number;
+    height?: any | number;
     borderRadius?: number;
     padding?: number;
     iconName?: string;

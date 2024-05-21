@@ -23,5 +23,5 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 
-// IOS:186934192169-uicr0hcvluvrdoko2al8g5rc1lssrs9v.apps.googleusercontent.com
-// ANDROID:186934192169-2q12jalvtd4cqc210pmv3qgfce5h7e88.apps.googleusercontent.com
+export const YOUR_IOS_CLIENT_ID = '186934192169-uicr0hcvluvrdoko2al8g5rc1lssrs9v.apps.googleusercontent.com';
+export const YOUR_ANDROID_CLIENT_ID = '186934192169-2q12jalvtd4cqc210pmv3qgfce5h7e88.apps.googleusercontent.com';

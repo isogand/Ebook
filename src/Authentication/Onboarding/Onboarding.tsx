@@ -14,56 +14,9 @@ import SubSlide from "./SubSlide";
 import Dot from "./Dot";
 import {StatusBar} from "expo-status-bar";
 import IconButton from "./SignInButtons/IconButton";
+import {slides} from "../../Constants/data/onboardingData";
 
 const { width } = Dimensions.get("window");
-const useStyles = makeStyles((theme: Theme) => ({
-    container: {
-        flex: 1,
-        backgroundColor: theme.colors.White,
-    },
-    slider: {
-        height: SLIDE_HEIGHT/1.15,
-    },
-    footer: {
-        flex: 1,
-    },
-    footerContent: {
-        flex: 1,
-        backgroundColor: theme.colors.White,
-    },
-    pagination: {
-        ...StyleSheet.absoluteFillObject,
-        height: theme.borderRadii.xl,
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-}));
-
-const slides = [
-    {
-        title: "Relaxed",
-        subtitle: "Welcome to Ebook",
-        description: "Confused about your outfit? Don't worry! Find the best outfit here!",
-        color: "#BFEAF5",
-        image: require('../../../assets/welcomeImage/W1.png')
-    },
-    {
-        title: "Playful",
-        subtitle: "Hear it First, Wear it First",
-        description: "Hating the clothes in your wardrobe? Explore hundreds of outfits ideas",
-        color: "#BEECC4",
-        image: require('../../../assets/welcomeImage/W2.png')
-    },
-    {
-        title: "Eccentric",
-        subtitle: "Your Style, Your Way",
-        description: "Create your individual & unique style and look amazing everyday",
-        color: "#FFE4D9",
-        image: require('../../../assets/welcomeImage/W3.png')
-    },
-];
-
 const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
     const styles = useStyles();
     const scroll = useRef<Animated.ScrollView>(null);
@@ -146,5 +99,33 @@ const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
         </View>
     );
 };
-
+const useStyles = makeStyles((theme: Theme) => ({
+    containers: {
+        paddingHorizontal: theme.spacing.m,
+        [theme.breakpoints.tablet]: {
+            paddingHorizontal: theme.spacing.l,
+        },
+    },
+    container: {
+        flex: 1,
+        backgroundColor: theme.colors.White,
+    },
+    slider: {
+        height: SLIDE_HEIGHT/1.15,
+    },
+    footer: {
+        flex: 1,
+    },
+    footerContent: {
+        flex: 1,
+        backgroundColor: theme.colors.White,
+    },
+    pagination: {
+        ...StyleSheet.absoluteFillObject,
+        height: theme.borderRadii.xl,
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+}));
 export default Onboarding;
