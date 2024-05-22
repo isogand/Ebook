@@ -94,7 +94,7 @@ const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
                         })}
                     </Animated.View>
                 </View>
-                <IconButton/>
+                <IconButton navigation={navigation}/>
             </View>
         </View>
     );

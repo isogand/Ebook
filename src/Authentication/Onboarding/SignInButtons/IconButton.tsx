@@ -11,6 +11,8 @@ import {auth, YOUR_ANDROID_CLIENT_ID, YOUR_IOS_CLIENT_ID} from "../../../../fire
 import {useDispatch, useSelector} from 'react-redux';
 import {clearUserinfo, setUserinfo} from "../../../store/AuthSlice";
 import firebase from "firebase/compat";
+import {ParamListBase, RouteProp} from "@react-navigation/native";
+import {NativeStackNavigationProp} from "@react-navigation/native-stack";
 
 interface UserInfo {
     displayName: string | null;
@@ -23,7 +25,8 @@ interface UserInfo {
 const {height, width} = Dimensions.get('window');
 
 WebBrowser.maybeCompleteAuthSession();
-function IconButton() {
+
+function IconButton(navigation:any) {
     const dispatch = useDispatch();
     const { user, isAuthenticated } = useSelector((state: any) => state.authReducer);
     const [userInfo, setUserInfo] = React.useState<UserInfo | null>(null);
@@ -33,7 +36,6 @@ function IconButton() {
         iosClientId: YOUR_IOS_CLIENT_ID,
         androidClientId: YOUR_ANDROID_CLIENT_ID
     });
-
     const checkLocalUser = async () => {
         try {
             setLoading(true); // Start loading before AsyncStorage operation
@@ -73,6 +75,7 @@ function IconButton() {
                 dispatch(setUserinfo(userInfo));
                 await AsyncStorage.setItem('@user', JSON.stringify(userInfo));
                 setUserInfo(userInfo); // Update local state
+                navigation.navigate('HomeScreen'); // Navigate to HomeScreen
             } catch (error) {
                 console.error('Error storing user data:', error);
             }
@@ -87,6 +90,7 @@ function IconButton() {
         }
     };
 
+    // for Sign-Out
     const handleSignOut = async () => {
         try {
             await auth.signOut(); // Use auth.signOut() instead of signOut(auth)
@@ -100,40 +104,28 @@ function IconButton() {
     if(loading) return (<ActivityIndicator size="large" color={palette.blue} />);
     return (
         <View style={{flex:1,alignItems:"center"}}>
-            {userInfo ? (
-                <>
-                    <Text>{user?.displayName}</Text>
-                    <Button
-                        title="Sign-Out"
-                        onPress={handleSignOut}
-                        borderRadius={100}
-                        textStyle={{ fontFamily: 'Arial',color:palette.red }}
-                    />
-                </>
-                ) : (
-                <>
-                    <GoogleSignIn promptAsync={promptAsync}/>
-                    <Button
-                        title="Get Started"
-                        onPress={() => {true}}
-                        width={width/1.1}
-                        height={'23%'}
-                        borderRadius={100}
-                        textStyle={{ fontFamily: 'Arial' }}
-                        backgroundColor={palette.blue}
-                        style={{marginVertical:'3%'}}
-                    />
-                    <Button
-                        title="I Already Have an Account"
-                        onPress={() => {true}}
-                        width={width/1.1}
-                        height={'23%'}
-                        borderRadius={100}
-                        textStyle={{ fontFamily: 'Arial' ,color:palette.blue}}
-                        backgroundColor={palette.lightblue}
-                    />
-                </>
-            )}
+            <>
+                <GoogleSignIn promptAsync={promptAsync}/>
+                <Button
+                    title="Get Started"
+                    onPress={() => {true}}
+                    width={width/1.1}
+                    height={'23%'}
+                    borderRadius={100}
+                    textStyle={{ fontFamily: 'Arial' }}
+                    backgroundColor={palette.blue}
+                    style={{marginVertical:'3%'}}
+                />
+                <Button
+                    title="I Already Have an Account"
+                    onPress={() => {true}}
+                    width={width/1.1}
+                    height={'23%'}
+                    borderRadius={100}
+                    textStyle={{ fontFamily: 'Arial' ,color:palette.blue}}
+                    backgroundColor={palette.lightblue}
+                />
+            </>
         </View>
     );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {AuthRoutes} from '../components/Navigation';
-import WelcomeScreen from './Onboarding/WelcomeScreen';
+import WelcomeScreen from './Onboarding/SplashScreen/WelcomeScreen';
 import Onboarding from "./Onboarding/Onboarding";
 
 const AuthenticationStack = createStackNavigator<AuthRoutes>();
