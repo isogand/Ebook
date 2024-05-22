@@ -1,10 +1,9 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {AuthRoutes} from '../components/Navigation';
-import WelcomeScreen from './Onboarding/SplashScreen/WelcomeScreen';
-import Onboarding from "./Onboarding/Onboarding";
+import {HomeRoutes} from '../components/Navigation';
+import HomeScreen from "./HomeScreen";
 
-const AuthenticationStack = createStackNavigator<AuthRoutes>();
+const AuthenticationStack = createStackNavigator<HomeRoutes>();
 // export const assets = [...welcomeAssets];
 export const AuthenticationNavigator = () => {
     return (
@@ -14,12 +13,8 @@ export const AuthenticationNavigator = () => {
             }}
         >
             <AuthenticationStack.Screen
-                name="WelcomeScreen"
-                component={WelcomeScreen}
-            />
-            <AuthenticationStack.Screen
-                name="Onboarding"
-                component={Onboarding}
+                name="HomeScreen"
+                component={HomeScreen}
             />
         </AuthenticationStack.Navigator>
     )

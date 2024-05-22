@@ -1,6 +1,6 @@
 import React from 'react';
 import {Dimensions, Image, ImageProps, StyleSheet, View} from 'react-native';
-import {makeStyles, Text, Theme} from '../../Constants/Theme';
+import {makeStyles, palette, Text, Theme} from '../../Constants/Theme';
 
 const {height, width} = Dimensions.get('window');
 export const SLIDE_HEIGHT = 0.61 * height;
@@ -34,9 +34,10 @@ const useStyles = makeStyles((theme: Theme) => ({
         backgroundColor: theme.colors.White,
         width:'100%',
         height: '100%',
-        borderBottomEndRadius: theme.borderRadii.xl,
-        borderBottomStartRadius: theme.borderRadii.xl,
-        // borderTopStartRadius: theme.borderRadii.xxl,
+        borderRadius:theme.borderRadii.xl,
+        borderWidth:15,
+        borderColor:palette.white,
+        marginTop:10
     },
 }));
 export default Slide;

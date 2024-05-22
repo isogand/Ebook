@@ -1,10 +1,10 @@
 import React from 'react';
 import {ParamListBase, RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {Box, makeStyles} from '../../../Constants/Theme'
 import {Dimensions} from "react-native";
+import {makeStyles, palette, Text} from "../Constants/Theme";
+import {Button} from "../components/Button";
 import {useSelector} from "react-redux";
-import Header from "../../../components/reusable/Header";
 
 type Props = {
     route: RouteProp<ParamListBase, string>;
@@ -12,17 +12,15 @@ type Props = {
 };
 
 const {height, width} = Dimensions.get('window');
-const  = ({navigation, route}: Props) => {
+const HomeScreen = () => {
     const styles = useStyles();
-    const {theme} = useSelector((state: any) => state.themeReducer);
+    const { user, isAuthenticated } = useSelector((state: any) => state.authReducer);
 
     return (
         <>
-            <Header variant={"primary"} title={' '} left={{ icon: 'ri-arrow-left-s-line', onPress: () => navigation.goBack() }} />
-
-          
+            <Text>{user?.displayName}</Text>
         </>
     )
 };
 const useStyles = makeStyles((theme) => ({}));
-export {};
+export default HomeScreen;
