@@ -1,5 +1,5 @@
 import React from 'react';
-import {palette, Text} from "../../../Constants/Theme";
+import {makeStyles, palette, Theme} from "../../../Constants/Theme";
 import {ActivityIndicator, Dimensions, View} from "react-native";
 import GoogleSignIn from "./GoogleSignIn/index.native";
 import {Button} from "../../../components/Button";
@@ -11,8 +11,7 @@ import {auth, YOUR_ANDROID_CLIENT_ID, YOUR_IOS_CLIENT_ID} from "../../../../fire
 import {useDispatch, useSelector} from 'react-redux';
 import {clearUserinfo, setUserinfo} from "../../../store/AuthSlice";
 import firebase from "firebase/compat";
-import {ParamListBase, RouteProp} from "@react-navigation/native";
-import {NativeStackNavigationProp} from "@react-navigation/native-stack";
+import {CommonActions} from "@react-navigation/native";
 
 interface UserInfo {
     displayName: string | null;
@@ -21,16 +20,18 @@ interface UserInfo {
     uid: string;
     providerId: string;
 }
-
+interface IconButtonProps {
+    navigation: any;
+}
 const {height, width} = Dimensions.get('window');
 
 WebBrowser.maybeCompleteAuthSession();
 
-function IconButton(navigation:any) {
+const IconButton = ({ navigation }: IconButtonProps) => {
+    const styles = useStyles();
     const dispatch = useDispatch();
-    const { user, isAuthenticated } = useSelector((state: any) => state.authReducer);
-    const [userInfo, setUserInfo] = React.useState<UserInfo | null>(null);
     const [loading, setLoading] = React.useState<boolean>(false);
+    const {isAuthenticated} = useSelector((state: any) => state.authReducer)
 
     const [request,response,promptAsync] = Google.useAuthRequest({
         iosClientId: YOUR_IOS_CLIENT_ID,
@@ -39,9 +40,9 @@ function IconButton(navigation:any) {
     const checkLocalUser = async () => {
         try {
             setLoading(true); // Start loading before AsyncStorage operation
-            const userJSON = await AsyncStorage.getItem("@user");
-            const userData = userJSON ? JSON.parse(userJSON) : null;
-            setUserInfo(userData);
+            // const userJSON = await AsyncStorage.getItem("@user");
+            // const userData = userJSON ? JSON.parse(userJSON) : null;
+            // setUserInfo(userData);
         } catch (e:undefined | any) {
             console.error('Error retrieving user data:', e.message);
         } finally {
@@ -53,7 +54,11 @@ function IconButton(navigation:any) {
         if (response?.type === 'success') {
             const { id_token } = response.params;
             const credential = GoogleAuthProvider.credential(id_token);
-            signInWithCredential(auth, credential);
+            signInWithCredential(auth, credential).then(() => {
+                navigation.dispatch(CommonActions.navigate({ name: 'Home' }));
+            }).catch(error => {
+                console.error('Error signing in:', error);
+            });
         } else if (response?.type === 'cancel' || response?.type === 'dismiss') {
             setLoading(false); // Stop loading when user cancels or dismisses
         }
@@ -61,10 +66,9 @@ function IconButton(navigation:any) {
 
     React.useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(handleAuthStateChanged);
-        checkLocalUser();
+        // checkLocalUser();
         return () => unsubscribe();
     }, []);
-
     // Add this function wherever it fits in your code, perhaps within your component or Redux setup
     const handleAuthStateChanged = async (user: firebase.User | null) => {
         if (user) {
@@ -72,38 +76,27 @@ function IconButton(navigation:any) {
                 const { displayName, email, photoURL, uid } = user;
                 const providerId = 'google.com'; // Assuming you're using Google Sign-In
                 const userInfo: UserInfo = { displayName, email, photoURL, uid, providerId };
-                dispatch(setUserinfo(userInfo));
-                await AsyncStorage.setItem('@user', JSON.stringify(userInfo));
-                setUserInfo(userInfo); // Update local state
-                navigation.navigate('HomeScreen'); // Navigate to HomeScreen
+
+                if (!isAuthenticated) {
+                    dispatch(setUserinfo(userInfo));
+                }
+               await AsyncStorage.setItem('@user', JSON.stringify(userInfo));
             } catch (error) {
                 console.error('Error storing user data:', error);
             }
         } else {
             try {
                 dispatch(clearUserinfo());
-                await AsyncStorage.removeItem('@user');
-                setUserInfo(null); // Clear local state
+               await AsyncStorage.removeItem('@user');
             } catch (error) {
                 console.error('Error removing user data:', error);
             }
         }
     };
 
-    // for Sign-Out
-    const handleSignOut = async () => {
-        try {
-            await auth.signOut(); // Use auth.signOut() instead of signOut(auth)
-            setUserInfo(null);
-            await AsyncStorage.removeItem("@user");
-        } catch (error) {
-            console.error("Error signing out:", error);
-        }
-    };
-    // console.log('userInfo', userInfo);
     if(loading) return (<ActivityIndicator size="large" color={palette.blue} />);
     return (
-        <View style={{flex:1,alignItems:"center"}}>
+        <View style={styles.container}>
             <>
                 <GoogleSignIn promptAsync={promptAsync}/>
                 <Button
@@ -132,4 +125,10 @@ function IconButton(navigation:any) {
 
 IconButton.displayName = 'IconButton';
 
+const useStyles = makeStyles((theme: Theme) => ({
+    container: {
+        flex: 1,
+        alignItems:"center"
+    },
+}));
 export default IconButton;

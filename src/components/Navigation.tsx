@@ -1,7 +1,5 @@
 import {RouteProp} from "@react-navigation/native";
 import {StackNavigationProp} from "@react-navigation/stack";
-import Onboarding from "../Authentication/Onboarding/Onboarding";
-import HomeScreen from "../Home/HomeScreen";
 
 export interface AuthNavigationProps<RouteName extends keyof AuthRoutes> {
     navigation: StackNavigationProp<AuthRoutes, RouteName>;

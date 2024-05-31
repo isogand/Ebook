@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 interface UserInfo {
   providerId: string | null;
@@ -6,7 +6,6 @@ interface UserInfo {
   displayName: string | null;
   email: string | null;
   photoURL: string | null;
-  // Add other necessary fields here
 }
 
 interface AuthState {
