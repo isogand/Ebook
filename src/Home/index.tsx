@@ -3,19 +3,19 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {HomeRoutes} from '../components/Navigation';
 import HomeScreen from "./HomeScreen";
 
-const AuthenticationStack = createStackNavigator<HomeRoutes>();
-// export const assets = [...welcomeAssets];
-export const AuthenticationNavigator = () => {
+const HomeStack = createStackNavigator<HomeRoutes>();
+
+export const HomeNavigator = () => {
     return (
-        <AuthenticationStack.Navigator
+        <HomeStack.Navigator
             screenOptions={{
                 headerShown: false
             }}
         >
-            <AuthenticationStack.Screen
+            <HomeStack.Screen
                 name="HomeScreen"
                 component={HomeScreen}
             />
-        </AuthenticationStack.Navigator>
+        </HomeStack.Navigator>
     )
 }

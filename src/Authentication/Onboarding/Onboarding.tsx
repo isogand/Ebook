@@ -15,9 +15,11 @@ import Dot from "./Dot";
 import {StatusBar} from "expo-status-bar";
 import IconButton from "./SignInButtons/IconButton";
 import {slides} from "../../Constants/data/onboardingData";
+import {Blurhash} from "react-native-blurhash";
+import BlurHashView from "../../components/BlurHashView";
 
 const { width } = Dimensions.get("window");
-const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
+const Onboarding = ({ navigation ,route }: AuthNavigationProps<"Onboarding">) => {
     const styles = useStyles();
     const scroll = useRef<Animated.ScrollView>(null);
     const x = useSharedValue(0);
@@ -40,6 +42,11 @@ const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
     }));
 
     return (
+        // <BlurHashView
+        //     blurhash="HD84GV9^jEWBaxWVayj[o0^-I;nhayayjua|j[ay"
+        //     style={styles.container}>
+        //
+        // </BlurHashView>
         <View style={styles.container}>
             <StatusBar style="light"/>
             <Animated.View style={[styles.slider]}>
@@ -53,8 +60,8 @@ const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
                     onScroll={onScroll}
                     scrollEventThrottle={16}
                 >
-                    {slides.map(({ title,image }, index) => (
-                        <Slide key={index} right={!!(index % 2)} {...{ title ,image}} />
+                    {slides.map(({title, image}, index) => (
+                        <Slide key={index} right={!!(index % 2)} {...{title, image}} />
                     ))}
                 </Animated.ScrollView>
             </Animated.View>
@@ -62,19 +69,19 @@ const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
                 <View>
                     <View style={styles.pagination}>
                         {slides.map((_, index) => (
-                            <Dot key={index} currentIndex={currentIndex} {...{ index }} />
+                            <Dot key={index} currentIndex={currentIndex} {...{index}} />
                         ))}
                     </View>
                     <Animated.View
                         style={[
                             {
                                 flexDirection: "row",
-                                width: width * slides.length ,
+                                width: width * slides.length,
                             },
                             footerStyle,
                         ]}
                     >
-                        {slides.map(({ subtitle, description }, index) => {
+                        {slides.map(({subtitle, description}, index) => {
                             const last = index === slides.length - 1;
                             return (
                                 <SubSlide
@@ -85,10 +92,10 @@ const Onboarding = ({ navigation }: AuthNavigationProps<"Onboarding">) => {
                                         } else {
                                             scroll.current
                                                 ?.getNode()
-                                                .scrollTo({ x: width * (index + 1), animated: true });
+                                                .scrollTo({x: width * (index + 1), animated: true});
                                         }
                                     }}
-                                    {...{ subtitle, description, last }}
+                                    {...{subtitle, description, last}}
                                 />
                             );
                         })}

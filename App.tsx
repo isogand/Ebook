@@ -11,6 +11,7 @@ import * as WebBrowser from "expo-web-browser";
 import { Provider } from 'react-redux';
 import {persistor, store} from "./src/store";
 import {PersistGate} from 'redux-persist/integration/react';
+import {HomeNavigator} from "./src/Home";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -35,7 +36,7 @@ export default function App() {
                                 }}
                             >
                                 <AppStack.Screen name="Authentication" component={AuthenticationNavigator}/>
-                                {/*<AppStack.Screen name="Home" component={HomeNavigator} />*/}
+                                <AppStack.Screen name="Home" component={HomeNavigator} />
                             </AppStack.Navigator>
                         </SafeAreaProvider>
                     </ThemeProvider>
