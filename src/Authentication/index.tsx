@@ -1,8 +1,10 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {AuthRoutes} from '../components/Navigation';
-import WelcomeScreen from './Onboarding/SplashScreen/WelcomeScreen';
+import WelcomeScreen from "./SplashScreen/WelcomeScreen";
 import Onboarding from "./Onboarding/Onboarding";
+import BaseLoginForm from "./SignInButtons/LoginForm/BaseLoginForm";
+
 
 const AuthenticationStack = createStackNavigator<AuthRoutes>();
 // export const assets = [...welcomeAssets];
@@ -20,6 +22,10 @@ export const AuthenticationNavigator = () => {
             <AuthenticationStack.Screen
                 name="Onboarding"
                 component={Onboarding}
+            />
+            <AuthenticationStack.Screen
+                name="BaseLoginForm"
+                component={BaseLoginForm}
             />
         </AuthenticationStack.Navigator>
     )

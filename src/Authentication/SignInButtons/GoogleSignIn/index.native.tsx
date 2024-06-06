@@ -1,7 +1,7 @@
 import React from 'react';
-import {palette} from "../../../../Constants/Theme";
+import {palette} from "../../../Constants/Theme";
 import {Dimensions} from "react-native";
-import {Button} from "../../../../components/Button";
+import {Button} from "../../../components/Button";
 
 /**
  * Google Sign In method for iOS and android that returns identityToken.

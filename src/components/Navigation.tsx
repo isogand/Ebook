@@ -22,6 +22,7 @@ export type AuthRoutes = {
     SignUp: undefined;
     ForgotPassword: undefined;
     PasswordChanged: undefined;
+    BaseLoginForm:undefined;
 };
 export type HomeRoutes = {
     HomeScreen: undefined;

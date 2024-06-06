@@ -13,7 +13,7 @@ import Slide, { SLIDE_HEIGHT } from "./Slide";
 import SubSlide from "./SubSlide";
 import Dot from "./Dot";
 import {StatusBar} from "expo-status-bar";
-import IconButton from "./SignInButtons/IconButton";
+import IconButton from "../SignInButtons/IconButton";
 import {slides} from "../../Constants/data/onboardingData";
 import {Blurhash} from "react-native-blurhash";
 import BlurHashView from "../../components/BlurHashView";
@@ -48,7 +48,7 @@ const Onboarding = ({ navigation ,route }: AuthNavigationProps<"Onboarding">) =>
         //
         // </BlurHashView>
         <View style={styles.container}>
-            <StatusBar style="light"/>
+            <StatusBar style="dark"/>
             <Animated.View style={[styles.slider]}>
                 <Animated.ScrollView
                     ref={scroll}
