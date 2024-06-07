@@ -15,8 +15,8 @@ import {
 
 export const palette = {
     white: '#FFFFFF',
-    input:'#EBEBEB',
-    silver:'#C0C0C0',
+    input:'#e5e5e5',
+    silver:'#d9d9d9',
     lightgray:'#BDBDBD',
     darkgray:'#828282',
     gray:'#7E7E7E',
@@ -36,6 +36,14 @@ export const palette = {
     black:'#000000',
     transparent: 'transparent',
     Secondary1:'#2A2E4B',
+};
+export const size = {
+    s: 4,
+    sm:8,
+    m: 14,
+    l: 25,
+    xl: 75,
+    xxl:100
 };
 
 const theme = createTheme({
@@ -99,9 +107,9 @@ const theme = createTheme({
         hero: {
             fontFamily: "Vazirmatn-Bold",
             fontSize: 30,
-            lineHeight: 30,
             color:'Black',
             textAlign: "center",
+            fontWeight:'bold',
         },
         title1: {
             fontSize: 10,
@@ -137,7 +145,7 @@ const theme = createTheme({
         title7: {
             fontSize: 18,
             fontFamily:'Vazirmatn-Bold',
-            color:'Input'
+            color:'TextBK'
         },
         title8: {
             fontSize: 12,

@@ -1,6 +1,6 @@
 import React from "react";
-import { Feather as Icon } from "@expo/vector-icons";
 import { Box, Text, Theme } from "../Constants/Theme";
+import Icon from "react-native-vector-icons/Feather";
 
 export interface RoundIconProps {
     name: string;
