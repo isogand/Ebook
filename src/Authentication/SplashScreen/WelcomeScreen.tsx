@@ -1,6 +1,6 @@
 import {Image} from "react-native";
-import {AuthNavigationProps} from "../../../components/Navigation";
-import {Box, makeStyles} from "../../../Constants/Theme";
+import {AuthNavigationProps} from "../../components/Navigation";
+import {Box, makeStyles} from "../../Constants/Theme";
 import React, {useEffect} from "react";
 import {StatusBar} from "expo-status-bar";
 import {useSelector} from "react-redux";
@@ -23,10 +23,10 @@ const WelcomeScreen = ({navigation,route}: AuthNavigationProps<"WelcomeScreen">)
 
     return (
         <Box alignItems={'center'} justifyContent={'center'} flex={1} backgroundColor={"White"}>
-            <StatusBar style="light"/>
-            <Image source={require('../../../../assets/ios/1024.png')} style={styles.image}/>
+            <StatusBar style="dark"/>
+            <Image source={require('../../../assets/ios/1024.png')} style={styles.image}/>
 
-            <Image source={require('../../../../assets/welcomeImage/Gear@1x-0.2s-200px-200px.gif')}
+            <Image source={require('../../../assets/welcomeImage/Gear@1x-0.2s-200px-200px.gif')}
                    style={styles.svg}/>
         </Box>
     );

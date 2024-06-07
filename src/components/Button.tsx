@@ -17,7 +17,7 @@ interface ButtonProps {
     onPress: () => void;
     style?: ViewStyle;
     textStyle?: TextStyle | TextStyle[];
-    width?: number;
+    width?: any | number;
     height?: any | number;
     borderRadius?: number;
     padding?: number;

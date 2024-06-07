@@ -1,15 +1,15 @@
 import React from 'react';
-import {makeStyles, palette, Theme} from "../../../Constants/Theme";
+import {makeStyles, palette, Theme} from "../../Constants/Theme";
 import {ActivityIndicator, Dimensions, View} from "react-native";
 import GoogleSignIn from "./GoogleSignIn/index.native";
-import {Button} from "../../../components/Button";
+import {Button} from "../../components/Button";
 import * as Google from "expo-auth-session/providers/google";
 import * as WebBrowser from "expo-web-browser";
 import {GoogleAuthProvider, signInWithCredential} from "firebase/auth";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {auth, YOUR_ANDROID_CLIENT_ID, YOUR_IOS_CLIENT_ID} from "../../../../firebaseConfig";
+import {auth, YOUR_ANDROID_CLIENT_ID, YOUR_IOS_CLIENT_ID} from "../../../firebaseConfig";
 import {useDispatch, useSelector} from 'react-redux';
-import {clearUserinfo, setUserinfo} from "../../../store/AuthSlice";
+import {clearUserinfo, setUserinfo} from "../../store/AuthSlice";
 import firebase from "firebase/compat";
 import {CommonActions} from "@react-navigation/native";
 
@@ -101,7 +101,7 @@ const IconButton = ({ navigation }: IconButtonProps) => {
                 <GoogleSignIn promptAsync={promptAsync}/>
                 <Button
                     title="Get Started"
-                    onPress={() => {true}}
+                    onPress={() => navigation.navigate('BaseLoginForm')}
                     width={width/1.1}
                     height={'23%'}
                     borderRadius={100}
