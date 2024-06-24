@@ -5,12 +5,11 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import {Animated, Dimensions, FlatList, TouchableOpacity} from "react-native";
 import {Button} from "../../../components/Button";
 import ScrollView = Animated.ScrollView;
-import CustomInput from "../../../components/modules/CustomInput";
 
 const screenWidth = Dimensions.get('window').width;
 export const Level1: React.FC = () => {
 
-    const [selected, setSelected] = React.useState<number | null>(null);
+    const [selected, setSelected] = React.useState(null);
 
     return (
         <Box pt='m' width='100%'>
@@ -28,9 +27,7 @@ export const Level1: React.FC = () => {
                                 alignItems:'center',
                                 paddingVertical: size.l
                             }}
-                            onPress={() => {
-                                setSelected(index);
-                            }}
+                            onPress={() => setSelected(index)}
                         >
 
                             <Icon
@@ -108,31 +105,29 @@ export const Level3: React.FC = () => {
         <Box pt='m' width='100%' height='100%'>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Box style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-                    {DataLevel3.map((item,index) => {
+                    {DataLevel3.map((item) => {
                         const isSelected = selectedGenres.includes(item.id);
                         return (
-                            <React.Fragment key={index}>
-                                <Button
-                                    title={item.title}
-                                    onPress={() => toggleGenreSelection(item.id)}
-                                    height={'18%'}
-                                    borderRadius={25}
-                                    backgroundColor={isSelected ? palette.blue : palette.white}
-                                    textStyle={{
-                                        fontFamily: 'Arial',
-                                        color: isSelected ? palette.white : palette.blue,
-                                        fontSize: 20,
-                                    }}
-                                    style={{
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        paddingHorizontal: 10,
-                                        margin: 5,
-                                        borderWidth: 2,
-                                        borderColor: palette.blue,
-                                    }}
-                                />
-                            </React.Fragment>
+                            <Button
+                                title={item.title}
+                                onPress={() => toggleGenreSelection(item.id)}
+                                height={'18%'}
+                                borderRadius={25}
+                                backgroundColor={isSelected ? palette.blue : palette.white}
+                                textStyle={{
+                                    fontFamily: 'Arial',
+                                    color: isSelected ? palette.white : palette.blue,
+                                    fontSize: 20,
+                                }}
+                                style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    paddingHorizontal: 10,
+                                    margin: 5,
+                                    borderWidth: 2,
+                                    borderColor: palette.blue,
+                                }}
+                            />
                         );
                     })}
                 </Box>
@@ -142,23 +137,7 @@ export const Level3: React.FC = () => {
 };
 
 export const Level4: React.FC = () => {
-
-    return (
-        <Box flex={1} mt='m'>
-
-            <CustomInput
-                key={'field.name'}
-                textInputProps={{
-                    // ...inputProps(field.name),
-                    value:('hi')
-                }}
-                placeholder={"field.placeholder"}
-                label={"Full Name"}
-
-                variant={'primary'}
-            />
-        </Box>
-    );
+    return <Text>Content for Level 4</Text>;
 };
 export const Level5: React.FC = () => {
     return <Text>Content for Level 5</Text>;
