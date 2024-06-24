@@ -74,3 +74,11 @@ export const DataLevel3: DataItem[] = [
     { id: 18, title: 'Guide / How-to' },
     { id: 19, title: 'Travel' },
 ];
+
+export const DataLevel4: DataItem[] = [
+    { id: 1, title: 'Romance' },
+    { id: 2, title: 'Fantasy' },
+    { id: 3, title: 'Sci-Fi' },
+    { id: 4, title: 'Horror' },
+    { id: 5, title: 'Mystery' },
+];
